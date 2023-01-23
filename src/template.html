@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>weather app</h1>
-    <div class="formCityName">
-         <form action="">
-            <label for="name">Location</label>
-            <input type="text" name="name" id="city-name">
-            <button type="submit">Search</button>
-         </form>
+    <!-- search -->
+    <div class="search-for-city">
+      <form action="">
+        <label for="name">Location</label>
+        <input type="text" name="name" id="city-name" />
+        <button type="submit">Search</button>
+      </form>
     </div>
-   
-</body>
+    <!-- basic data -->
+    <div class="basic-data">
+      <div class="name-of-the-city"></div>
+      <div class="description"></div>
+      <div class="current-temp"></div>
+      <div class="weather-icon"></div>
+    </div>
+    <!-- more details -->
+    <div class="details-data">
+      <div class="current-feel"></div>
+      <div class="humidity"></div>
+      <div class="wind"></div>
+      <div class="visibility"></div>
+    </div>
+  </body>
 </html>
