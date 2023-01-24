@@ -4,13 +4,13 @@ export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
     let data = await getCurrentData(e);
 
-    getCityNameAndCountry(data);
-    getCurrentTemp(data);
-    weatherDescription(data);
+    displayCityNameAndCountry(data);
+    displayCurrentTemp(data);
+    displayWeatherDescription(data);
   });
 };
 
-function getCityNameAndCountry(data) {
+function displayCityNameAndCountry(data) {
   const cityName = document.createElement("h1");
   const countryName = document.createElement("span");
   cityName.textContent = `${data.cityName}, `;
@@ -20,14 +20,14 @@ function getCityNameAndCountry(data) {
   div.append(cityName, countryName);
 }
 
-function getCurrentTemp(data) {
+function displayCurrentTemp(data) {
   const p = document.createElement("p");
   p.textContent = data.currentTemp;
   const div = document.querySelector(".current-temp");
   div.append(p);
 }
 
-function weatherDescription(data) {
+function displayWeatherDescription(data) {
   const p = document.createElement("p");
   p.textContent = data.currentWeatherDescription;
   const div = document.querySelector(".description");

@@ -1,6 +1,6 @@
 async function getWeatherLocation(e) {
   e.preventDefault();
-  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c"
+  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
   const inputValue = e.target[0].value;
   if (inputValue === "") {
     return;
@@ -10,7 +10,7 @@ async function getWeatherLocation(e) {
         `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_key}&units=metric`
       );
       const data = await resource.json();
-      console.log(data)
+      console.log(data);
       const cityName = data.name;
       const country = data.sys.country;
       const currentTemp = data.main.temp;
@@ -44,9 +44,11 @@ async function getWeatherLocation(e) {
 
 export async function getCurrentData(e) {
   const weatherData = await getWeatherLocation(e);
-  console.log(weatherData)
+  console.log(weatherData);
   if (weatherData === undefined) {
     return;
   }
   return weatherData;
 }
+
+
