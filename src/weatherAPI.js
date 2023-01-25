@@ -1,13 +1,37 @@
-async function getWeatherLocation(e) {
-  e.preventDefault();
-  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
-  const inputValue = e.target[0].value;
-  if (inputValue === "") {
-    return;
+export async function getCityCoordinates(e){
+  e.preventDefault()
+  const city_name = e.target[0].value
+  if(city_name === ""){
+    return
   } else {
+  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
+  try{
+   const resource = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&appid=${API_key}`)
+   const data = await resource.json()
+   const lat = data[0].lat
+   const lon = data[0].lon
+
+   const coordinates = {
+    lat, lon
+   }
+   console.log(data)
+   console.log(coordinates)
+   return coordinates
+  }
+  catch {
+    (err) => console.log(err)
+  }}
+}
+
+export async function getCurrentWeather(dataCoord) {
+ const lat = dataCoord.lat
+ const lon = dataCoord.lon
+ console.log(lat)
+ console.log(lon)
+  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
     try {
       const resource = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_key}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}`
       );
       const data = await resource.json();
       console.log(data);
@@ -32,7 +56,7 @@ async function getWeatherLocation(e) {
         visibility,
         windSpeed,
         currentWeather,
-        currentWeatherDescription,
+        currentWeatherDescription
       };
 
       return weatherData;
@@ -40,15 +64,21 @@ async function getWeatherLocation(e) {
       (err) => console.log(err);
     }
   }
+
+export async function getDailyWeather(dataCoord){
+  const lat = dataCoord.lat
+  const lon = dataCoord.lon
+  const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
+  try {
+    const resource = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_key}`
+    );
+    const hourlyData = await resource.json();
+    console.log(hourlyData)
+  } catch {
+    (err) => console.log(err);
+  }
 }
 
-export async function getCurrentData(e) {
-  const weatherData = await getWeatherLocation(e);
-  console.log(weatherData);
-  if (weatherData === undefined) {
-    return;
-  }
-  return weatherData;
-}
 
 
