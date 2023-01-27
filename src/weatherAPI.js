@@ -68,7 +68,7 @@ export async function getCurrentWeather(dataCoord) {
   }
 }
 
-export async function getDailyWeather(dataCoord) {
+export async function getHourlyWeather(dataCoord) {
   const lat = dataCoord.lat;
   const lon = dataCoord.lon;
   const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";

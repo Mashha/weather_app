@@ -1,6 +1,6 @@
 import {
   getCurrentWeather,
-  getDailyWeather,
+  getHourlyWeather,
   getCityCoordinates,
 } from "./weatherAPI.js";
 
@@ -8,9 +8,10 @@ export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
     const dataCoord = await getCityCoordinates(e);
     const weatherData = await getCurrentWeather(dataCoord);
-    const dailyWeather = await getDailyWeather(dataCoord);
-    console.log(dailyWeather);
-    displayHourlyWeather(dailyWeather);
+    const hourlyWeather = await getHourlyWeather(dataCoord);
+
+    displayHourlyWeather(hourlyWeather);
+    displayDailyWeather(hourlyWeather);
 
     displayCityNameAndCountry(weatherData);
     displayCurrentTemp(weatherData);
@@ -42,7 +43,7 @@ function displayWeatherDescription(weatherData) {
   div.append(p);
 }
 
-function displayHourlyWeather(dailyWeather) {
+function displayHourlyWeather(hourlyWeather) {
   //need current day
   const today = new Date();
   const day = today.getDate();
@@ -65,26 +66,49 @@ function displayHourlyWeather(dailyWeather) {
   const dateForToday = `${day} ${month} ${year}`;
 
   //need day from the object
-  dailyWeather.forEach(function (item) {
+  hourlyWeather.forEach(function (item) {
     const dateToConvert = item.dt;
     const newDate = new Date(dateToConvert * 1000);
+
     const year = newDate.getFullYear();
     const month = months[newDate.getMonth()];
     const date = newDate.getDate();
     const currentDate = `${date} ${month} ${year}`;
+    const hour = newDate.getHours();
+    const min = newDate.getMinutes();
+    const sec = newDate.getSeconds();
 
     if (dateForToday === currentDate) {
       const divHour = document.createElement("div");
       divHour.classList.add("div-hour");
-      const temp = document.createElement("span");
+
+      const temp = document.createElement("div");
       temp.textContent = item.main.temp;
+
       const description = document.createElement("div");
       description.textContent = item.weather[0].description;
-      console.log(item);
 
-      divHour.append(temp, description);
-      const hourlyWeather = document.querySelector(".day-weather-byhours");
+      const timeOfTheDay = `${hour}${min}${sec}`;
+      const time = document.createElement("div");
+      time.textContent = timeOfTheDay;
+
+      divHour.append(temp, time, description);
+      const hourlyWeather = document.querySelector(".day-weather-byHours");
       hourlyWeather.append(divHour);
     }
   });
+}
+
+function displayDailyWeather(hourlyWeather) {
+  const daysByDate = {};
+  hourlyWeather.forEach(function (item) {
+    const date = item.dt_txt.split(" ")[0];
+
+    if (daysByDate[date]) {
+      daysByDate[date].push(item);
+    } else {
+      daysByDate[date] = [item];
+    }
+  });
+  console.log(daysByDate);
 }
