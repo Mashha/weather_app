@@ -100,15 +100,38 @@ function displayHourlyWeather(hourlyWeather) {
 }
 
 function displayDailyWeather(hourlyWeather) {
+  const today = new Date().toJSON().split("T")[0];
+
   const daysByDate = {};
   hourlyWeather.forEach(function (item) {
     const date = item.dt_txt.split(" ")[0];
 
-    if (daysByDate[date]) {
+    if (date === today) {
+      return;
+    } else if (daysByDate[date]) {
       daysByDate[date].push(item);
     } else {
       daysByDate[date] = [item];
     }
   });
-  console.log(daysByDate);
+
+  const filtered = [];
+  for (const key in daysByDate) {
+    filtered.push(daysByDate[key][4]);
+  }
+  filtered.forEach(function (day) {
+    console.log(day);
+    const dayDate = day.dt;
+    const eachDay = new Date(dayDate * 1000)
+      .toLocaleString("en-US", { weekday: "long" })
+      .split(",")[0];
+
+    const displayTemp = document.createElement("div");
+    displayTemp.textContent = day.main.temp;
+    const displayDate = document.createElement("div");
+    displayDate.textContent = eachDay;
+    //icon
+    const dailyWeather = document.querySelector(".weather-for-five-days");
+    dailyWeather.append(displayDate, displayTemp);
+  });
 }
