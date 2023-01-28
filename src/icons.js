@@ -13,7 +13,7 @@ import wind from "./images/wind.png";
 
 export function weatherIcons(icon) {
   const currentHour = new Date().getHours();
-  
+
   if (currentHour > 7 && currentHour < 20) {
     switch (icon) {
       case "clear":
@@ -30,6 +30,10 @@ export function weatherIcons(icon) {
         return fog;
       case "wind":
         return wind;
+      case "mist":
+        return fog;
+      case "drizzle":
+        return rain;
     }
   } else
     switch (icon) {
@@ -47,5 +51,9 @@ export function weatherIcons(icon) {
         return fog;
       case "wind":
         return wind;
+      case "mist":
+        return fog;
+      case "drizzle":
+        return rain;
     }
 }
