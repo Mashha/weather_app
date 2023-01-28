@@ -1,8 +1,10 @@
+import { weatherIcons } from "./icons.js";
 import {
   getCurrentWeather,
   getHourlyWeather,
   getCityCoordinates,
 } from "./weatherAPI.js";
+
 
 export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
@@ -15,7 +17,7 @@ export const displayDataOnPage = () => {
 
     displayCityNameAndCountry(weatherData);
     displayCurrentTemp(weatherData);
-    displayWeatherDescription(weatherData);
+    displayWeatherDescriptionAndIcon(weatherData);
   });
 };
 
@@ -36,11 +38,14 @@ function displayCurrentTemp(weatherData) {
   div.append(p);
 }
 
-function displayWeatherDescription(weatherData) {
+function displayWeatherDescriptionAndIcon(weatherData) {
   const p = document.createElement("p");
   p.textContent = weatherData.currentWeatherDescription;
   const div = document.querySelector(".description");
-  div.append(p);
+  const iconImg = document.createElement("img")
+  iconImg.classList.add("icon-img")
+  iconImg.src = weatherIcons(weatherData.currentWeather.toLowerCase())
+  div.append(p, iconImg);
 }
 
 function displayHourlyWeather(hourlyWeather) {
