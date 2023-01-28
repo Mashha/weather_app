@@ -120,7 +120,7 @@ function displayDailyWeather(hourlyWeather) {
     filtered.push(daysByDate[key][4]);
   }
   filtered.forEach(function (day) {
-    console.log(day);
+    
     const dayDate = day.dt;
     const eachDay = new Date(dayDate * 1000)
       .toLocaleString("en-US", { weekday: "long" })
