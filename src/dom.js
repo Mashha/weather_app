@@ -5,7 +5,6 @@ import {
   getCityCoordinates,
 } from "./weatherAPI.js";
 
-
 export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
     const dataCoord = await getCityCoordinates(e);
@@ -42,9 +41,9 @@ function displayWeatherDescriptionAndIcon(weatherData) {
   const p = document.createElement("p");
   p.textContent = weatherData.currentWeatherDescription;
   const div = document.querySelector(".description");
-  const iconImg = document.createElement("img")
-  iconImg.classList.add("icon-img")
-  iconImg.src = weatherIcons(weatherData.currentWeather.toLowerCase())
+  const iconImg = document.createElement("img");
+  iconImg.classList.add("icon-img");
+  iconImg.src = weatherIcons(weatherData.currentWeather.toLowerCase());
   div.append(p, iconImg);
 }
 
@@ -125,18 +124,21 @@ function displayDailyWeather(hourlyWeather) {
     filtered.push(daysByDate[key][4]);
   }
   filtered.forEach(function (day) {
-    
-    const dayDate = day.dt;
-    const eachDay = new Date(dayDate * 1000)
-      .toLocaleString("en-US", { weekday: "long" })
-      .split(",")[0];
+    if (day === undefined) {
+      return;
+    } else {
+      const dayDate = day.dt;
+      const eachDay = new Date(dayDate * 1000)
+        .toLocaleString("en-US", { weekday: "long" })
+        .split(",")[0];
 
-    const displayTemp = document.createElement("div");
-    displayTemp.textContent = day.main.temp;
-    const displayDate = document.createElement("div");
-    displayDate.textContent = eachDay;
-    //icon
-    const dailyWeather = document.querySelector(".weather-for-five-days");
-    dailyWeather.append(displayDate, displayTemp);
+      const displayTemp = document.createElement("div");
+      displayTemp.textContent = day.main.temp;
+      const displayDate = document.createElement("div");
+      displayDate.textContent = eachDay;
+      //icon
+      const dailyWeather = document.querySelector(".weather-for-five-days");
+      dailyWeather.append(displayDate, displayTemp);
+    }
   });
 }
