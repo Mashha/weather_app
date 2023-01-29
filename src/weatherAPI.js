@@ -46,6 +46,8 @@ export async function getCurrentWeather(dataCoord) {
       const windSpeed = data.wind.speed; // m/s
       const currentWeather = data.weather[0].main;
       const currentWeatherDescription = data.weather[0].description;
+      const sunrise = data.sys.sunrise
+      const sunset = data.sys.sunset
 
       const weatherData = {
         cityName,
@@ -58,6 +60,8 @@ export async function getCurrentWeather(dataCoord) {
         windSpeed,
         currentWeather,
         currentWeatherDescription,
+        sunrise, 
+        sunset
       };
 
       return weatherData;

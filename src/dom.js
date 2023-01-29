@@ -4,6 +4,8 @@ import {
   getHourlyWeather,
   getCityCoordinates,
 } from "./weatherAPI.js";
+import sunriseImg from "./images/sunrise.png";
+import sunsetImg from "./images/sunset.png";
 
 export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
@@ -16,7 +18,11 @@ export const displayDataOnPage = () => {
 
     displayCityNameAndCountry(weatherData);
     displayCurrentTemp(weatherData);
-    displayWeatherDescriptionAndIcon(weatherData);
+    displayWeatherDescription(weatherData);
+    displayIcon(weatherData);
+
+    weatherDetails(weatherData);
+    sunriseAndSunset(weatherData);
   });
 };
 
@@ -31,20 +37,27 @@ function displayCityNameAndCountry(weatherData) {
 }
 
 function displayCurrentTemp(weatherData) {
-  const p = document.createElement("p");
-  p.textContent = weatherData.currentTemp;
+  const temp = document.createElement("div");
+  temp.textContent = weatherData.currentTemp;
+  const feel = document.querySelector("div");
+  feel.textContent = weatherData.feelsLike;
   const div = document.querySelector(".current-temp");
-  div.append(p);
+  div.append(temp, feel);
 }
 
-function displayWeatherDescriptionAndIcon(weatherData) {
+function displayWeatherDescription(weatherData) {
   const p = document.createElement("p");
   p.textContent = weatherData.currentWeatherDescription;
   const div = document.querySelector(".description");
+  div.append(p);
+}
+
+function displayIcon(weatherData) {
   const iconImg = document.createElement("img");
   iconImg.classList.add("icon-img");
   iconImg.src = weatherIcons(weatherData.currentWeather.toLowerCase());
-  div.append(p, iconImg);
+  const weatherIconDiv = document.querySelector(".weather-icon");
+  weatherIconDiv.append(iconImg);
 }
 
 function displayHourlyWeather(hourlyWeather) {
@@ -141,4 +154,76 @@ function displayDailyWeather(hourlyWeather) {
       dailyWeather.append(displayDate, displayTemp);
     }
   });
+}
+
+function weatherDetails(weatherData) {
+  const pressure = document.querySelector(".pressure-data");
+  pressure.textContent = weatherData.pressure;
+
+  const humidity = document.querySelector(".humidity-data");
+  humidity.textContent = weatherData.humid;
+
+  const wind = document.querySelector(".wind-data");
+  wind.textContent = weatherData.windSpeed;
+
+  const visibility = document.querySelector(".visibility-data");
+  visibility.textContent = weatherData.visibility;
+}
+
+function sunriseAndSunset(weatherData) {
+  const sunrise = document.querySelector(".sunrise");
+  const spanSunrise = document.createElement("span");
+  const unixSunrise = new Date(weatherData.sunrise * 1000)
+    .toLocaleString()
+    .split(",")[1];
+  const sunriseIcon = document.createElement("img");
+  sunriseIcon.classList.add("sunrise-icon");
+  sunriseIcon.src = sunriseImg;
+  spanSunrise.textContent = unixSunrise;
+  sunrise.append(spanSunrise, sunriseIcon);
+
+  const sunset = document.querySelector(".sunset");
+  const spanSunset = document.createElement("span");
+  const unixSunset = new Date(weatherData.sunset * 1000)
+    .toLocaleString()
+    .split(",")[1];
+  spanSunset.textContent = unixSunset;
+  const sunsetIcon = document.createElement("img");
+  sunsetIcon.classList.add("sunset-icon");
+  sunsetIcon.src = sunsetImg;
+  sunset.append(spanSunset, sunsetIcon);
+}
+
+export function currentDay() {
+  const today = new Date();
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dayWord = days[today.getDay()];
+  const dayNum = today.getDate();
+  const month = months[today.getMonth()];
+  const currentDay = document.createElement("div");
+  currentDay.textContent = `${dayWord}, ${dayNum} ${month}`;
+  const divContainer = document.querySelector(".current-day");
+  divContainer.append(currentDay);
 }

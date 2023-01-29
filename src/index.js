@@ -1,3 +1,4 @@
 import "./scss/style.scss";
-import { displayDataOnPage } from "./dom";
+import { displayDataOnPage, currentDay } from "./dom";
 displayDataOnPage()
+currentDay()

@@ -1,17 +1,55 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-   width: 100%;
-   height: 100vh;
-   display: grid;
-   grid-template-columns: 2fr 1fr;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-template-areas:
+    "search data"
+    "basic days"
+    "details days"
+    "byHour days"
+    "sunriseSunset days";
 
-    .icon-img{
-        width: 100px;
+  .weather-search {
+    grid-area: search;
+  }
 
+  .weather-basic {
+    grid-area: basic;
+    display: flex;
+  }
+
+  .weather-details {
+    grid-area: details;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .weather-hours {
+    grid-area: byHour;
+  }
+
+  .weather-days {
+    grid-area: days;
+  }
+
+  .sunrise-sunset {
+    grid-area: sunriseSunset;
+
+    .sunrise-icon,
+    .sunset-icon {
+      width: 100px;
     }
+  }
+
+  .icon-img {
+    width: 100px;
+  }
 }
