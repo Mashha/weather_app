@@ -39,9 +39,14 @@ function displayCityNameAndCountry(weatherData) {
 function displayCurrentTemp(weatherData) {
   const temp = document.createElement("div");
   temp.textContent = weatherData.currentTemp;
-  const feel = document.querySelector("div");
-  feel.textContent = weatherData.feelsLike;
+  const feel = document.createElement("div");
+  feel.classList.add("feels-like")
+  const feelTemp = document.createElement("span")
+  feelTemp.textContent = weatherData.feelsLike;
+  const text = document.createElement("p")
+  text.textContent = "Feels like "
   const div = document.querySelector(".current-temp");
+  feel.append(text, feelTemp)
   div.append(temp, feel);
 }
 

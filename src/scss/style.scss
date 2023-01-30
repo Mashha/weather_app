@@ -16,30 +16,68 @@ body {
     "details days"
     "byHour days"
     "sunriseSunset days";
+  gap: 20px;
 
   .weather-search {
     grid-area: search;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    input {
+      width: 600px;
+      padding: 2px;
+      border-radius: 5px;
+    }
   }
 
   .weather-basic {
     grid-area: basic;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: auto;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .feels-like {
+        display: flex;
+        gap: 10px;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
   }
 
   .weather-details {
     grid-area: details;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
 
-    .visibility p {
-      text-transform: capitalize;
+    .visibility {
+      justify-self: end;
+      p {
+        text-transform: capitalize;
+      }
+    }
+    .humidity {
+      justify-self: end;
     }
   }
-
   .weather-hours {
     grid-area: byHour;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 20px;
 
@@ -86,6 +124,8 @@ body {
   .sunrise-sunset {
     grid-area: sunriseSunset;
     display: flex;
+    justify-content: center;
+    gap: 100px;
 
     .sunrise,
     .sunset {
@@ -103,6 +143,9 @@ body {
 
   .current-day {
     grid-area: data;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .icon-img {
     width: 100px;
