@@ -102,14 +102,15 @@ function displayHourlyWeather(hourlyWeather) {
       const temp = document.createElement("div");
       temp.textContent = item.main.temp;
 
-      const description = document.createElement("div");
-      description.textContent = item.weather[0].description;
+      const hourIcon = document.createElement("img");
+      hourIcon.classList.add("hour-icon");
+      hourIcon.src = weatherIcons(item.weather[0].main.toLowerCase());
 
-      const timeOfTheDay = `${hour}${min}${sec}`;
+      const timeOfTheDay = `${hour}:${min}${sec}`;
       const time = document.createElement("div");
       time.textContent = timeOfTheDay;
 
-      divHour.append(temp, time, description);
+      divHour.append(temp, hourIcon, time);
       const hourlyWeather = document.querySelector(".day-weather-byHours");
       hourlyWeather.append(divHour);
     }
@@ -149,9 +150,26 @@ function displayDailyWeather(hourlyWeather) {
       displayTemp.textContent = day.main.temp;
       const displayDate = document.createElement("div");
       displayDate.textContent = eachDay;
-      //icon
+      const singleDayDesc = document.createElement("p");
+      singleDayDesc.classList.add("single-day-description");
+      singleDayDesc.textContent = day.weather[0].description;
+
+      const dailyIcon = document.createElement("img");
+      dailyIcon.classList.add("daily-icons");
+      dailyIcon.src = weatherIcons(day.weather[0].main.toLowerCase());
+
       const dailyWeather = document.querySelector(".weather-for-five-days");
-      dailyWeather.append(displayDate, displayTemp);
+      const singleDayDiv = document.createElement("div");
+      singleDayDiv.classList.add("single-day");
+
+      const singleDayLeft = document.createElement("div");
+      singleDayLeft.classList.add("single-day-left");
+      singleDayLeft.append(displayDate, singleDayDesc);
+      const singleDayRight = document.createElement("div");
+      singleDayRight.classList.add("single-day-right");
+      singleDayRight.append(dailyIcon, displayTemp);
+      singleDayDiv.append(singleDayLeft, singleDayRight);
+      dailyWeather.append(singleDayDiv);
     }
   });
 }
@@ -180,7 +198,9 @@ function sunriseAndSunset(weatherData) {
   sunriseIcon.classList.add("sunrise-icon");
   sunriseIcon.src = sunriseImg;
   spanSunrise.textContent = unixSunrise;
-  sunrise.append(spanSunrise, sunriseIcon);
+  const sunriseTitle = document.createElement("p");
+  sunriseTitle.textContent = "Sunrise";
+  sunrise.append(sunriseTitle, spanSunrise, sunriseIcon);
 
   const sunset = document.querySelector(".sunset");
   const spanSunset = document.createElement("span");
@@ -191,7 +211,9 @@ function sunriseAndSunset(weatherData) {
   const sunsetIcon = document.createElement("img");
   sunsetIcon.classList.add("sunset-icon");
   sunsetIcon.src = sunsetImg;
-  sunset.append(spanSunset, sunsetIcon);
+  const sunsetTitle = document.createElement("p");
+  sunsetTitle.textContent = "Sunset";
+  sunset.append(sunsetTitle, spanSunset, sunsetIcon);
 }
 
 export function currentDay() {

@@ -30,18 +30,70 @@ body {
     grid-area: details;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    .visibility p {
+      text-transform: capitalize;
+    }
   }
 
   .weather-hours {
     grid-area: byHour;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .div-hour {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .hour-icon {
+        width: 100px;
+      }
+    }
   }
 
   .weather-days {
     grid-area: days;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .single-day {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      justify-content: space-around;
+
+      .single-day-left {
+        .single-day-description {
+          text-transform: capitalize;
+        }
+      }
+      .single-day-right {
+        display: flex;
+        align-items: center;
+      }
+      .daily-icons {
+        width: 100px;
+      }
+    }
   }
 
   .sunrise-sunset {
     grid-area: sunriseSunset;
+    display: flex;
+
+    .sunrise,
+    .sunset {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     .sunrise-icon,
     .sunset-icon {
@@ -49,6 +101,9 @@ body {
     }
   }
 
+  .current-day {
+    grid-area: data;
+  }
   .icon-img {
     width: 100px;
   }
