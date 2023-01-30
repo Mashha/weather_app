@@ -12,7 +12,8 @@ export const displayDataOnPage = () => {
     const dataCoord = await getCityCoordinates(e);
     const weatherData = await getCurrentWeather(dataCoord);
     const hourlyWeather = await getHourlyWeather(dataCoord);
-
+    clearInputField()
+    
     displayHourlyWeather(hourlyWeather);
     displayDailyWeather(hourlyWeather);
 
@@ -253,4 +254,9 @@ export function currentDay() {
   currentDay.textContent = `${dayWord}, ${dayNum} ${month}`;
   const divContainer = document.querySelector(".current-day");
   divContainer.append(currentDay);
+}
+
+function clearInputField(){
+  const inputField = document.querySelector("#city-name")
+  inputField.value = ""
 }
