@@ -278,3 +278,21 @@ function clearDataFromPage() {
   document.querySelector(".sunset").textContent = "";
   document.querySelector(".weather-days").textContent = "";
 }
+
+// function convertToF(celsius){
+//   return celsius * 9/5 + 32
+// }
+// function convertToC(fahrenheit){
+//   return  9/5 *(fahrenheit - 32)
+// }
+
+// document.querySelector(".switch input").addEventListener("change", tempUnits)
+
+
+// function tempUnits(){
+// if(checkbox === checked){
+//   convertToF(celsius)
+// } else {
+//   convertToC(fahrenheit)
+// }
+// }

@@ -17,7 +17,7 @@
       </form>
     </div>
     <!-- basic data -->
-    <div class="basic-data weather-basic">
+    <div class="basic-data weather-basic container">
       <div class="left">
         <div class="name-of-the-city"></div>
         <div class="current-temp"></div>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <!-- more details -->
-    <div class="details-data weather-details">
+    <div class="details-data weather-details container">
       <div class="pressure">
         <p>Pressure</p>
         <span class="pressure-data"></span>
@@ -48,18 +48,28 @@
     </div>
 
     <!-- hourly data -->
-    <div class="day-weather-byHours weather-hours"></div>
+    <div class="day-weather-byHours weather-hours container"></div>
 
     <!-- sunrise and sunset -->
-    <div class="sunrise-sunset">
+    <div class="sunrise-sunset container">
       <div class="sunrise"></div>
       <div class="sunset"></div>
     </div>
 
     <!-- current day and time -->
-    <div class="current-day"></div>
+    <div class="current-day">
+      <div class="switch-units">
+        <span class="cel"><i class="fa-solid fa-c"></i></span>
+        <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <span class="fahr"><i class="fa-solid fa-f"></i></span>
+    </div>
+      <div class="current-date container"></div>
+    </div>
 
     <!-- weather for 5 days -->
-    <div class="weather-for-five-days weather-days"></div>
+    <div class="weather-for-five-days weather-days container"></div>
   </body>
 </html>
