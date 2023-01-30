@@ -9,11 +9,12 @@ import sunsetImg from "./images/sunset.png";
 
 export const displayDataOnPage = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
+    clearDataFromPage();
     const dataCoord = await getCityCoordinates(e);
     const weatherData = await getCurrentWeather(dataCoord);
     const hourlyWeather = await getHourlyWeather(dataCoord);
-    clearInputField()
-    
+    clearInputField();
+
     displayHourlyWeather(hourlyWeather);
     displayDailyWeather(hourlyWeather);
 
@@ -39,15 +40,15 @@ function displayCityNameAndCountry(weatherData) {
 
 function displayCurrentTemp(weatherData) {
   const temp = document.createElement("div");
-  temp.textContent = weatherData.currentTemp;
+  temp.textContent = `${weatherData.currentTemp} °C`;
   const feel = document.createElement("div");
-  feel.classList.add("feels-like")
-  const feelTemp = document.createElement("span")
+  feel.classList.add("feels-like");
+  const feelTemp = document.createElement("span");
   feelTemp.textContent = weatherData.feelsLike;
-  const text = document.createElement("p")
-  text.textContent = "Feels like "
+  const text = document.createElement("p");
+  text.textContent = "Feels like ";
   const div = document.querySelector(".current-temp");
-  feel.append(text, feelTemp)
+  feel.append(text, feelTemp);
   div.append(temp, feel);
 }
 
@@ -182,16 +183,19 @@ function displayDailyWeather(hourlyWeather) {
 
 function weatherDetails(weatherData) {
   const pressure = document.querySelector(".pressure-data");
-  pressure.textContent = weatherData.pressure;
+  pressure.textContent = `${weatherData.pressure} mBar`;
 
   const humidity = document.querySelector(".humidity-data");
-  humidity.textContent = weatherData.humid;
+  humidity.textContent = `${weatherData.humid} %`;
 
   const wind = document.querySelector(".wind-data");
-  wind.textContent = weatherData.windSpeed;
+  //m/s to km/h
+  const windSpeedConvert = (weatherData.windSpeed * (60 * 60)) / 1000;
+  wind.textContent = `${windSpeedConvert} km/h`;
 
   const visibility = document.querySelector(".visibility-data");
-  visibility.textContent = weatherData.visibility;
+  const convertToKm = weatherData.visibility / 1000;
+  visibility.textContent = `${convertToKm} km`;
 }
 
 function sunriseAndSunset(weatherData) {
@@ -256,7 +260,21 @@ export function currentDay() {
   divContainer.append(currentDay);
 }
 
-function clearInputField(){
-  const inputField = document.querySelector("#city-name")
-  inputField.value = ""
+function clearInputField() {
+  const inputField = document.querySelector("#city-name");
+  inputField.value = "";
+}
+
+function clearDataFromPage() {
+  document.querySelector(".name-of-the-city").textContent = "";
+  document.querySelector(".current-temp").textContent = "";
+  document.querySelector(".weather-icon").textContent = "";
+  document.querySelector(".description").textContent = "";
+  document.querySelector(".pressure-data").textContent = "";
+  document.querySelector(".wind-data").textContent = "";
+  document.querySelector(".visibility-data").textContent = "";
+  document.querySelector(".weather-hours").textContent = "";
+  document.querySelector(".sunrise").textContent = "";
+  document.querySelector(".sunset").textContent = "";
+  document.querySelector(".weather-days").textContent = "";
 }
