@@ -54,40 +54,37 @@ export function weatherIcons(icon) {
   } else
     switch (icon) {
       case "clear":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return moon;
       case "clouds":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return cloudsNight;
       case "rain":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return rainNight;
       case "snow":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return snowNight;
       case "storm":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return stormNight;
       case "fog":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return fog;
       case "wind":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return wind;
       case "mist":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return fog;
       case "drizzle":
-        document.body.style.background =
-          "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+        nightBg();
         return rain;
     }
+}
+
+function nightBg() {
+  document.body.style.background =
+    "linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%)";
+  document.body.style.color = "white";
 }
