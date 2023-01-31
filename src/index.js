@@ -1,4 +1,10 @@
 import "./scss/style.scss";
 import { displayDataOnPage, currentDay } from "./dom";
-displayDataOnPage()
 currentDay()
+
+document.querySelector("form").addEventListener("submit", displayDataOnPage)
+
+displayDataOnPage({
+    target: [{value: "Vienna"}],
+    preventDefault: () => {}
+  })

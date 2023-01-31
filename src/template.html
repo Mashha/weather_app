@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/ba4c8dc756.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/ba4c8dc756.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather app</title>
   </head>
   <body>
@@ -12,7 +15,12 @@
     <div class="search-for-city weather-search">
       <form action="">
         <label for="name"></label>
-        <input type="text" name="name" id="city-name" placeholder="Search for cities"/>
+        <input
+          type="text"
+          name="name"
+          id="city-name"
+          placeholder="Search for cities"
+        />
         <button type="submit">Search</button>
       </form>
     </div>
@@ -29,21 +37,35 @@
     </div>
     <!-- more details -->
     <div class="details-data weather-details container">
-      <div class="pressure">
-        <p>Pressure</p>
-        <span class="pressure-data"></span>
+      <div class="details-left">
+        <div class="pressure">
+          <p>Pressure</p>
+          <span class="pressure-data"></span>
+        </div>
+        <div class="humidity">
+          <p>Humidity</p>
+          <span class="humidity-data"></span>
+        </div>
       </div>
-      <div class="humidity">
-        <p>Humidity</p>
-        <span class="humidity-data"></span>
+      <div class="details-middle">
+        <div class="max-temp">
+          <p>Max temp</p>
+          <span class="max-temp-data"></span>
+        </div>
+        <div class="min-temp">
+          <p>Min temp</p>
+          <span class="min-temp-data"></span>
+        </div>
       </div>
-      <div class="wind">
-        <p>Wind speed</p>
-        <span class="wind-data"></span>
-      </div>
-      <div class="visibility">
-        <p>visibility</p>
-        <span class="visibility-data"></span>
+      <div class="details-right">
+        <div class="wind">
+          <p>Wind speed</p>
+          <span class="wind-data"></span>
+        </div>
+        <div class="visibility">
+          <p>visibility</p>
+          <span class="visibility-data"></span>
+        </div>
       </div>
     </div>
 
@@ -61,11 +83,11 @@
       <div class="switch-units">
         <span class="cel"><i class="fa-solid fa-c"></i></span>
         <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
-      <span class="fahr"><i class="fa-solid fa-f"></i></span>
-    </div>
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <span class="fahr"><i class="fa-solid fa-f"></i></span>
+      </div>
       <div class="current-date container"></div>
     </div>
 

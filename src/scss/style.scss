@@ -9,7 +9,6 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
-  grid-template-rows: auto 1fr 1fr 1fr;
   grid-template-areas:
     "search data"
     "basic days"
@@ -18,10 +17,11 @@ body {
     "sunriseSunset days";
   gap: 20px;
   position: relative;
-  background-image: url("../images/frame.png");
+  background: linear-gradient(90deg, hsla(39, 100%, 71%, 1) 0%, hsla(216, 100%, 62%, 1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: center center;
 
   .container {
     background: inherit;
@@ -59,10 +59,11 @@ body {
 
   .weather-basic {
     grid-area: basic;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     width: 80%;
     margin: auto;
+    padding: 10px;
 
     .left {
       display: flex;
@@ -78,18 +79,26 @@ body {
     .right {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
     }
   }
 
   .weather-details {
     grid-area: details;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     width: 80%;
     margin: auto;
     gap: 20px;
+    padding: 10px;
 
+    .details-left,
+    .details-right,
+    .details-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     .visibility {
       justify-self: end;
       p {
@@ -108,6 +117,7 @@ body {
     gap: 20px;
     width: 80%;
     margin: auto;
+    padding: 10px;
 
     .div-hour {
       display: flex;
@@ -157,6 +167,7 @@ body {
     gap: 100px;
     width: 80%;
     margin: auto;
+    padding: 10px;
 
     .sunrise,
     .sunset {

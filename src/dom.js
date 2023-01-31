@@ -7,25 +7,23 @@ import {
 import sunriseImg from "./images/sunrise.png";
 import sunsetImg from "./images/sunset.png";
 
-export const displayDataOnPage = () => {
-  document.querySelector("form").addEventListener("submit", async (e) => {
-    clearDataFromPage();
-    const dataCoord = await getCityCoordinates(e);
-    const weatherData = await getCurrentWeather(dataCoord);
-    const hourlyWeather = await getHourlyWeather(dataCoord);
-    clearInputField();
+export const displayDataOnPage = async (e) => {
+  clearDataFromPage();
+  const dataCoord = await getCityCoordinates(e);
+  const weatherData = await getCurrentWeather(dataCoord);
+  const hourlyWeather = await getHourlyWeather(dataCoord);
+  clearInputField();
 
-    displayHourlyWeather(hourlyWeather);
-    displayDailyWeather(hourlyWeather);
+  displayHourlyWeather(hourlyWeather);
+  displayDailyWeather(hourlyWeather);
 
-    displayCityNameAndCountry(weatherData);
-    displayCurrentTemp(weatherData);
-    displayWeatherDescription(weatherData);
-    displayIcon(weatherData);
+  displayCityNameAndCountry(weatherData);
+  displayCurrentTemp(weatherData);
+  displayWeatherDescription(weatherData);
+  displayIcon(weatherData);
 
-    weatherDetails(weatherData);
-    sunriseAndSunset(weatherData);
-  });
+  weatherDetails(weatherData);
+  sunriseAndSunset(weatherData);
 };
 
 function displayCityNameAndCountry(weatherData) {
@@ -196,6 +194,12 @@ function weatherDetails(weatherData) {
   const visibility = document.querySelector(".visibility-data");
   const convertToKm = weatherData.visibility / 1000;
   visibility.textContent = `${convertToKm} km`;
+
+  const maxTemp = document.querySelector(".max-temp-data");
+  maxTemp.textContent = weatherData.maxTemp;
+
+  const minTemp = document.querySelector(".min-temp-data");
+  minTemp.textContent = weatherData.minTemp;
 }
 
 function sunriseAndSunset(weatherData) {
@@ -287,7 +291,6 @@ function clearDataFromPage() {
 // }
 
 // document.querySelector(".switch input").addEventListener("change", tempUnits)
-
 
 // function tempUnits(){
 // if(checkbox === checked){
