@@ -17,11 +17,7 @@ body {
     "sunriseSunset days";
   gap: 20px;
   position: relative;
-  background: linear-gradient(90deg, hsla(39, 100%, 71%, 1) 0%, hsla(216, 100%, 62%, 1) 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
   background-attachment: fixed;
-  background-position: center center;
 
   .container {
     background: inherit;
