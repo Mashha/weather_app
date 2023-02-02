@@ -26,6 +26,7 @@ export async function getCityCoordinates(e) {
   }
 }
 
+
 export async function getCurrentWeather(dataCoord) {
   let lat = dataCoord.lat;
   let lon = dataCoord.lon;

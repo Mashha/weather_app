@@ -24,6 +24,7 @@ export const displayDataOnPage = async (e) => {
 
   weatherDetails(weatherData);
   sunriseAndSunset(weatherData);
+
 };
 
 function displayCityNameAndCountry(weatherData) {
@@ -42,7 +43,7 @@ function displayCurrentTemp(weatherData) {
   const feel = document.createElement("div");
   feel.classList.add("feels-like");
   const feelTemp = document.createElement("span");
-  feelTemp.textContent = weatherData.feelsLike;
+  feelTemp.textContent = `${weatherData.feelsLike} °C`;
   const text = document.createElement("p");
   text.textContent = "Feels like ";
   const div = document.querySelector(".current-temp");
@@ -105,7 +106,7 @@ function displayHourlyWeather(hourlyWeather) {
       divHour.classList.add("div-hour");
 
       const temp = document.createElement("div");
-      temp.textContent = item.main.temp;
+      temp.textContent = `${item.main.temp} °C`;
 
       const hourIcon = document.createElement("img");
       hourIcon.classList.add("hour-icon");
@@ -152,7 +153,7 @@ function displayDailyWeather(hourlyWeather) {
         .split(",")[0];
 
       const displayTemp = document.createElement("div");
-      displayTemp.textContent = day.main.temp;
+      displayTemp.textContent = `${day.main.temp} °C`;
       const displayDate = document.createElement("div");
       displayDate.textContent = eachDay;
       const singleDayDesc = document.createElement("p");
@@ -283,19 +284,3 @@ function clearDataFromPage() {
   document.querySelector(".weather-days").textContent = "";
 }
 
-// function convertToF(celsius){
-//   return celsius * 9/5 + 32
-// }
-// function convertToC(fahrenheit){
-//   return  9/5 *(fahrenheit - 32)
-// }
-
-// document.querySelector(".switch input").addEventListener("change", tempUnits)
-
-// function tempUnits(){
-// if(checkbox === checked){
-//   convertToF(celsius)
-// } else {
-//   convertToC(fahrenheit)
-// }
-// }
