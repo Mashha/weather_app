@@ -197,10 +197,10 @@ function weatherDetails(weatherData) {
   visibility.textContent = `${convertToKm} km`;
 
   const maxTemp = document.querySelector(".max-temp-data");
-  maxTemp.textContent = weatherData.maxTemp;
+  maxTemp.textContent = `${weatherData.maxTemp} °C`;
 
   const minTemp = document.querySelector(".min-temp-data");
-  minTemp.textContent = weatherData.minTemp;
+  minTemp.textContent = `${weatherData.minTemp} °C`;
 }
 
 function sunriseAndSunset(weatherData) {

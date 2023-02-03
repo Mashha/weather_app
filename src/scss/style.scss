@@ -14,7 +14,8 @@ body {
     "basic days"
     "details days"
     "byHour days"
-    "sunriseSunset days";
+    "sunriseSunset days"
+    "footer footer";
   gap: 20px;
   position: relative;
 
@@ -49,6 +50,8 @@ body {
       width: 600px;
       padding: 2px;
       border-radius: 5px;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
     }
   }
 
@@ -252,5 +255,10 @@ body {
   }
   .icon-img {
     width: 100px;
+  }
+
+  footer {
+    grid-area: footer;
+    text-align: center;
   }
 }
