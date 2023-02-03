@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/ba4c8dc756.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather app</title>
-<script defer src="bundle.js"></script></head>
-<body>
-    <h1>weather app</h1>
-</body>
+  <script defer src="bundle.js"></script></head>
+  <body>
+    <!-- search -->
+    <div class="search-for-city weather-search">
+      <form action="">
+        <label for="name"></label>
+        <input
+          type="text"
+          name="name"
+          id="city-name"
+          placeholder="Search for cities"
+        />
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    
+    <!-- basic data -->
+    <div class="basic-data weather-basic container">
+      <div class="left">
+        <div class="name-of-the-city"></div>
+        <div class="current-temp"></div>
+      </div>
+      <div class="right">
+        <div class="weather-icon"></div>
+        <div class="description"></div>
+      </div>
+    </div>
+    <!-- more details -->
+    <div class="details-data weather-details container">
+      <div class="details-left">
+        <div class="pressure">
+          <p>Pressure</p>
+          <span class="pressure-data"></span>
+        </div>
+        <div class="humidity">
+          <p>Humidity</p>
+          <span class="humidity-data"></span>
+        </div>
+      </div>
+      <div class="details-middle">
+        <div class="max-temp">
+          <p>Max temp</p>
+          <span class="max-temp-data"></span>
+        </div>
+        <div class="min-temp">
+          <p>Min temp</p>
+          <span class="min-temp-data"></span>
+        </div>
+      </div>
+      <div class="details-right">
+        <div class="wind">
+          <p>Wind speed</p>
+          <span class="wind-data"></span>
+        </div>
+        <div class="visibility">
+          <p>visibility</p>
+          <span class="visibility-data"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- hourly data -->
+    <div class="day-weather-byHours weather-hours container"></div>
+
+    <!-- sunrise and sunset -->
+    <div class="sunrise-sunset container">
+      <div class="sunrise"></div>
+      <div class="sunset"></div>
+    </div>
+
+    <!-- weather for 5 days -->
+    <div class="weather-for-five-days weather-days container"></div>
+
+    <!-- current day and time -->
+    <div class="current-day">
+      <!-- <div class="switch-units">
+        <span class="cel"><i class="fa-solid fa-c"></i></span>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <span class="fahr"><i class="fa-solid fa-f"></i></span>
+      </div> -->
+      <div class="current-date"></div>
+    </div>
+
+    <footer>
+      <p>
+        Build and designed by
+        <a
+          href="https://github.com/Mashha/Library_project"
+          id="name"
+          target="_blank">
+          Pimu
+        </a>
+        |
+        <a href="https://github.com/Mashha" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </p>
+    </footer>
+  </body>
 </html>
