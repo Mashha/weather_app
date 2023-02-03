@@ -159,6 +159,7 @@ function displayDailyWeather(hourlyWeather) {
       const displayTemp = document.createElement("div");
       displayTemp.textContent = `${Math.round(day.main.temp)} °C`;
       const displayDate = document.createElement("div");
+      displayDate.classList.add("day-name")
       displayDate.textContent = eachDay;
       const singleDayDesc = document.createElement("p");
       singleDayDesc.classList.add("single-day-description");

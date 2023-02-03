@@ -21,6 +21,7 @@ body {
   gap: 20px;
   position: relative;
   font-family: "Krub", sans-serif;
+  font-weight: 200;
 
   .container {
     background: inherit;
@@ -86,6 +87,7 @@ body {
       .current-temp {
         .temp {
           font-size: 40px;
+          font-weight: 400;
         }
 
         .feels-like {
@@ -120,14 +122,38 @@ body {
       flex-direction: column;
       gap: 10px;
     }
-    .visibility {
-      justify-self: end;
-      p {
-        text-transform: capitalize;
+
+    .details-left {
+      .pressure,
+      .humidity {
+        p {
+          font-weight: 600;
+        }
       }
     }
-    .humidity {
-      justify-self: end;
+
+    .details-middle {
+      .max-temp,
+      .min-temp {
+        p {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .details-right {
+      .wind {
+        p {
+          font-weight: 600;
+        }
+      }
+      .visibility {
+        justify-self: end;
+        p {
+          text-transform: capitalize;
+          font-weight: 600;
+        }
+      }
     }
   }
   .weather-hours {
@@ -168,6 +194,9 @@ body {
       justify-content: space-between;
 
       .single-day-left {
+        .day-name {
+          font-weight: 600;
+        }
         .single-day-description {
           text-transform: capitalize;
         }
@@ -197,6 +226,10 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      p {
+        font-weight: 600;
+      }
     }
 
     .sunrise-icon,
