@@ -190,7 +190,7 @@ function weatherDetails(weatherData) {
   const wind = document.querySelector(".wind-data");
   //m/s to km/h
   const windSpeedConvert = (weatherData.windSpeed * (60 * 60)) / 1000;
-  wind.textContent = `${windSpeedConvert} km/h`;
+  wind.textContent = `${Math.round(windSpeedConvert)} km/h`;
 
   const visibility = document.querySelector(".visibility-data");
   const convertToKm = weatherData.visibility / 1000;

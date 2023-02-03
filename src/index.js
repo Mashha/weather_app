@@ -1,10 +1,17 @@
 import "./scss/style.scss";
 import { displayDataOnPage, currentDay } from "./dom";
-currentDay()
+currentDay();
 
-document.querySelector("form").addEventListener("submit", displayDataOnPage)
+document.querySelector("form").addEventListener("submit", displayDataOnPage);
 
-displayDataOnPage({
-    target: [{value: "Vienna"}],
-    preventDefault: () => {}
-  })
+// if (navigator.geolocation) {
+//   navigator.geolocation.getCurrentPosition(function (position) {
+//     var lat = position.coords.latitude;
+//     var long = position.coords.longitude;
+//   });
+// } else {
+  displayDataOnPage({
+    target: [{ value: "Vienna" }],
+    preventDefault: () => {},
+  });
+//}
