@@ -40,6 +40,7 @@ function displayCityNameAndCountry(weatherData) {
 function displayCurrentTemp(weatherData) {
   const temp = document.createElement("div");
   temp.textContent = `${(weatherData.currentTemp).toFixed(1)} °C`;
+  temp.classList.add("temp")
   const feel = document.createElement("div");
   feel.classList.add("feels-like");
   const feelTemp = document.createElement("span");

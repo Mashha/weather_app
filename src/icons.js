@@ -19,36 +19,44 @@ export function weatherIcons(icon) {
       case "clear":
         document.body.style.background =
           "linear-gradient(90deg, hsla(39, 100%, 71%, 1) 0%, hsla(216, 100%, 62%, 1) 100%)";
+          document.body.style.color = "black"
         return sun;
       case "clouds":
         document.body.style.background =
           "linear-gradient(90deg, hsla(228, 17%, 53%, 1) 0%, hsla(229, 28%, 88%, 1) 100%)";
+          document.body.style.color = "black"
         return clouds;
       case "rain":
         document.body.style.background =
           "linear-gradient(90deg, hsla(213, 77%, 14%, 1) 0%, hsla(202, 27%, 45%, 1) 100%)";
+          document.body.style.color = "white"
         return rain;
       case "snow":
         document.body.style.background =
           "linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%)";
+          document.body.style.color = "black"
         return snow;
       case "storm":
         document.body.style.background =
           "linear-gradient(90deg, rgb(24, 35, 107) 0%, rgb(71, 17, 101) 100%)";
+          document.body.style.color = "white"
         return storm;
       case "fog":
         document.body.style.background =
           "linear-gradient(90deg, hsla(228, 17%, 53%, 1) 0%, hsla(229, 28%, 88%, 1) 100%)";
+          document.body.style.color = "black"
         return fog;
       case "wind":
         return wind;
       case "mist":
         document.body.style.background =
           "linear-gradient(90deg, hsla(228, 17%, 53%, 1) 0%, hsla(229, 28%, 88%, 1) 100%)";
+          document.body.style.color = "black"
         return fog;
       case "drizzle":
         document.body.style.background =
           "linear-gradient(90deg, hsla(213, 77%, 14%, 1) 0%, hsla(202, 27%, 45%, 1) 100%)";
+          document.body.style.color = "white"
         return rain;
     }
   } else
