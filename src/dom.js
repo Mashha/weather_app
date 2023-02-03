@@ -8,23 +8,26 @@ import sunriseImg from "./images/sunrise.png";
 import sunsetImg from "./images/sunset.png";
 
 export const displayDataOnPage = async (e) => {
-  clearDataFromPage();
-  const dataCoord = await getCityCoordinates(e);
-  const weatherData = await getCurrentWeather(dataCoord);
-  const hourlyWeather = await getHourlyWeather(dataCoord);
-  clearInputField();
+  if (e.target[0].value === "") {
+    return;
+  } else {
+    clearDataFromPage();
+    const dataCoord = await getCityCoordinates(e);
+    const weatherData = await getCurrentWeather(dataCoord);
+    const hourlyWeather = await getHourlyWeather(dataCoord);
+    clearInputField();
 
-  displayHourlyWeather(hourlyWeather);
-  displayDailyWeather(hourlyWeather);
+    displayHourlyWeather(hourlyWeather);
+    displayDailyWeather(hourlyWeather);
 
-  displayCityNameAndCountry(weatherData);
-  displayCurrentTemp(weatherData);
-  displayWeatherDescription(weatherData);
-  displayIcon(weatherData);
+    displayCityNameAndCountry(weatherData);
+    displayCurrentTemp(weatherData);
+    displayWeatherDescription(weatherData);
+    displayIcon(weatherData);
 
-  weatherDetails(weatherData);
-  sunriseAndSunset(weatherData);
-
+    weatherDetails(weatherData);
+    sunriseAndSunset(weatherData);
+  }
 };
 
 function displayCityNameAndCountry(weatherData) {
@@ -39,12 +42,12 @@ function displayCityNameAndCountry(weatherData) {
 
 function displayCurrentTemp(weatherData) {
   const temp = document.createElement("div");
-  temp.textContent = `${(weatherData.currentTemp).toFixed(1)} °C`;
-  temp.classList.add("temp")
+  temp.textContent = `${weatherData.currentTemp.toFixed(1)} °C`;
+  temp.classList.add("temp");
   const feel = document.createElement("div");
   feel.classList.add("feels-like");
   const feelTemp = document.createElement("span");
-  feelTemp.textContent = `${(weatherData.feelsLike).toFixed(1)} °C`;
+  feelTemp.textContent = `${weatherData.feelsLike.toFixed(1)} °C`;
   const text = document.createElement("p");
   text.textContent = "Feels like ";
   const div = document.querySelector(".current-temp");
@@ -107,7 +110,7 @@ function displayHourlyWeather(hourlyWeather) {
       divHour.classList.add("div-hour");
 
       const temp = document.createElement("div");
-      temp.textContent = `${(item.main.temp).toFixed(1)} °C`;
+      temp.textContent = `${item.main.temp.toFixed(1)} °C`;
 
       const hourIcon = document.createElement("img");
       hourIcon.classList.add("hour-icon");
@@ -154,7 +157,7 @@ function displayDailyWeather(hourlyWeather) {
         .split(",")[0];
 
       const displayTemp = document.createElement("div");
-      displayTemp.textContent = `${(day.main.temp).toFixed(1)} °C`;
+      displayTemp.textContent = `${day.main.temp.toFixed(1)} °C`;
       const displayDate = document.createElement("div");
       displayDate.textContent = eachDay;
       const singleDayDesc = document.createElement("p");
@@ -198,10 +201,10 @@ function weatherDetails(weatherData) {
   visibility.textContent = `${convertToKm} km`;
 
   const maxTemp = document.querySelector(".max-temp-data");
-  maxTemp.textContent = `${(weatherData.maxTemp).toFixed(1)} °C`;
+  maxTemp.textContent = `${weatherData.maxTemp.toFixed(1)} °C`;
 
   const minTemp = document.querySelector(".min-temp-data");
-  minTemp.textContent = `${(weatherData.minTemp).toFixed(1)} °C`;
+  minTemp.textContent = `${weatherData.minTemp.toFixed(1)} °C`;
 }
 
 function sunriseAndSunset(weatherData) {
@@ -284,4 +287,3 @@ function clearDataFromPage() {
   document.querySelector(".sunset").textContent = "";
   document.querySelector(".weather-days").textContent = "";
 }
-

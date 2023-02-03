@@ -287,6 +287,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
+    p {
+      #name {
+        color: teal;
+        text-decoration: none;
+      }
+      a {
+        i {
+          color: teal;
+        }
+      }
+    }
   }
 }
 
