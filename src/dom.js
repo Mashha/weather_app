@@ -39,11 +39,11 @@ function displayCityNameAndCountry(weatherData) {
 
 function displayCurrentTemp(weatherData) {
   const temp = document.createElement("div");
-  temp.textContent = `${weatherData.currentTemp} °C`;
+  temp.textContent = `${(weatherData.currentTemp).toFixed(1)} °C`;
   const feel = document.createElement("div");
   feel.classList.add("feels-like");
   const feelTemp = document.createElement("span");
-  feelTemp.textContent = `${weatherData.feelsLike} °C`;
+  feelTemp.textContent = `${(weatherData.feelsLike).toFixed(1)} °C`;
   const text = document.createElement("p");
   text.textContent = "Feels like ";
   const div = document.querySelector(".current-temp");
@@ -106,7 +106,7 @@ function displayHourlyWeather(hourlyWeather) {
       divHour.classList.add("div-hour");
 
       const temp = document.createElement("div");
-      temp.textContent = `${item.main.temp} °C`;
+      temp.textContent = `${(item.main.temp).toFixed(1)} °C`;
 
       const hourIcon = document.createElement("img");
       hourIcon.classList.add("hour-icon");
@@ -153,7 +153,7 @@ function displayDailyWeather(hourlyWeather) {
         .split(",")[0];
 
       const displayTemp = document.createElement("div");
-      displayTemp.textContent = `${day.main.temp} °C`;
+      displayTemp.textContent = `${(day.main.temp).toFixed(1)} °C`;
       const displayDate = document.createElement("div");
       displayDate.textContent = eachDay;
       const singleDayDesc = document.createElement("p");
@@ -197,10 +197,10 @@ function weatherDetails(weatherData) {
   visibility.textContent = `${convertToKm} km`;
 
   const maxTemp = document.querySelector(".max-temp-data");
-  maxTemp.textContent = `${weatherData.maxTemp} °C`;
+  maxTemp.textContent = `${(weatherData.maxTemp).toFixed(1)} °C`;
 
   const minTemp = document.querySelector(".min-temp-data");
-  minTemp.textContent = `${weatherData.minTemp} °C`;
+  minTemp.textContent = `${(weatherData.minTemp).toFixed(1)} °C`;
 }
 
 function sunriseAndSunset(weatherData) {
