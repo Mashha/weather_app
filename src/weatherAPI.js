@@ -18,14 +18,12 @@ export async function getCityCoordinates(e) {
         lon,
       };
       console.log(data);
-
       return coordinates;
     } catch {
       (err) => console.log(err);
     }
   }
 }
-
 
 export async function getCurrentWeather(dataCoord) {
   let lat = dataCoord.lat;
@@ -89,4 +87,12 @@ export async function getHourlyWeather(dataCoord) {
   } catch {
     (err) => console.log(err);
   }
+}
+
+function displayLoading() {
+  document.querySelector(".loading-container").style.display = "flex";
+}
+
+function hideLoading() {
+  document.querySelector(".loading-container").style.display = "none";
 }

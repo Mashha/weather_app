@@ -4,6 +4,10 @@ currentDay();
 
 document.querySelector("form").addEventListener("submit", displayDataOnPage);
 
+window.addEventListener("load", function(){
+  document.querySelector(".loading-container").style.display = "none"
+})
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(success, error);
 
@@ -14,7 +18,7 @@ if (navigator.geolocation) {
   }
 
   function error(){
-    alert('Unable to retrieve your location');
+    alert('Unable to retrieve your location, locating to Vienna');
     displayDataOnPage({
       target: [{ value: "Vienna" }],
       preventDefault: () => {},
