@@ -36,7 +36,7 @@ export async function getCurrentWeather(dataCoord) {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`
     );
     const data = await resource.json();
-    console.log(data);
+    
     const cityName = data.name;
     const country = data.sys.country;
     const currentTemp = data.main.temp;
