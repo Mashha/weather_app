@@ -42,7 +42,6 @@ function displayCityNameAndCountry(weatherData) {
   const countryName = document.createElement("span");
   cityName.textContent = `${weatherData.cityName}, `;
   countryName.textContent = `${weatherData.country}`;
-
   const div = document.querySelector(".name-of-the-city");
   div.append(cityName, countryName);
 }
@@ -193,26 +192,38 @@ function displayDailyWeather(hourlyWeather) {
 }
 
 function weatherDetails(weatherData) {
+  const pressureName = document.querySelector(".pressure-name")
+  pressureName.textContent = "Pressure"
   const pressure = document.querySelector(".pressure-data");
   pressure.textContent = `${weatherData.pressure} mBar`;
 
   const humidity = document.querySelector(".humidity-data");
   humidity.textContent = `${weatherData.humid} %`;
+  const humidName = document.querySelector(".humid-name")
+  humidName.textContent = "Humidity"
 
   const wind = document.querySelector(".wind-data");
   //m/s to km/h
   const windSpeedConvert = (weatherData.windSpeed * (60 * 60)) / 1000;
   wind.textContent = `${Math.round(windSpeedConvert)} km/h`;
+  const windName = document.querySelector(".wind-name")
+  windName.textContent = "Wind"
 
   const visibility = document.querySelector(".visibility-data");
   const convertToKm = weatherData.visibility / 1000;
   visibility.textContent = `${convertToKm} km`;
+  const visibilityName = document.querySelector(".visibility-name")
+  visibilityName.textContent = "Visibility"
 
   const maxTemp = document.querySelector(".max-temp-data");
   maxTemp.textContent = `${Math.round(weatherData.maxTemp)} °C`;
+  const maxName = document.querySelector(".max-name")
+  maxName.textContent = "Max temp"
 
   const minTemp = document.querySelector(".min-temp-data");
   minTemp.textContent = `${Math.round(weatherData.minTemp)} °C`;
+  const minName = document.querySelector(".min-name")
+  minName.textContent = "Min temp"
 }
 
 function sunriseAndSunset(weatherData) {

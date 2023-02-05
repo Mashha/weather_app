@@ -3,7 +3,7 @@ import { displayDataOnPage, currentDay } from "./dom";
 currentDay();
 
 window.addEventListener("load", function () {
-  document.querySelector(".loading-container").style.display = "none";
+  document.querySelector(".loading-container").style.display = "relative";
 });
 
 document
@@ -18,6 +18,7 @@ if (navigator.geolocation) {
     var lon = position.coords.longitude;
     let location = { lat, lon };
     displayDataOnPage({}, location);
+    document.querySelector(".loading-container").style.display = "none";
   }
 
   function error() {

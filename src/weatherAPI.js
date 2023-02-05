@@ -6,6 +6,7 @@ export async function getCityCoordinates(e) {
   } else {
     const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
     try {
+      displayLoading()
       const resource = await fetch(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&appid=${API_key}`
       );
@@ -17,7 +18,8 @@ export async function getCityCoordinates(e) {
         lat,
         lon,
       };
-      console.log(data);
+      
+      hideLoading()
       return coordinates;
     } catch {
       (err) => console.log(err);
@@ -89,10 +91,10 @@ export async function getHourlyWeather(dataCoord) {
   }
 }
 
-function displayLoading() {
+export function displayLoading() {
   document.querySelector(".loading-container").style.display = "flex";
 }
 
-function hideLoading() {
+export function hideLoading() {
   document.querySelector(".loading-container").style.display = "none";
 }
