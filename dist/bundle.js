@@ -493,7 +493,6 @@ function _getCurrentWeather() {
           return resource.json();
         case 9:
           data = _context2.sent;
-          console.log(data);
           cityName = data.name;
           country = data.sys.country;
           currentTemp = data.main.temp;
@@ -525,17 +524,17 @@ function _getCurrentWeather() {
             maxTemp: maxTemp
           };
           return _context2.abrupt("return", weatherData);
-        case 29:
-          _context2.prev = 29;
+        case 28:
+          _context2.prev = 28;
           _context2.t0 = _context2["catch"](3);
           (function (err) {
             return console.log(err);
           });
-        case 32:
+        case 31:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[3, 29]]);
+    }, _callee2, null, [[3, 28]]);
   }));
   return _getCurrentWeather.apply(this, arguments);
 }
