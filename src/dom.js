@@ -7,28 +7,35 @@ import {
 import sunriseImg from "./images/sunrise.png";
 import sunsetImg from "./images/sunset.png";
 
-export const displayDataOnPage = async (e) => {
-  if (e.target[0].value === "") {
+export const displayDataOnPage = async (e, geoPosition) => {
+  if (e?.target?.[0]?.value === "") {
     return;
+  } else if (geoPosition !== undefined) {
+    const weatherData = await getCurrentWeather(geoPosition);
+    const hourlyWeather = await getHourlyWeather(geoPosition);
+    weatherDataDisplay(weatherData, hourlyWeather);
   } else {
-    clearDataFromPage();
     const dataCoord = await getCityCoordinates(e);
     const weatherData = await getCurrentWeather(dataCoord);
     const hourlyWeather = await getHourlyWeather(dataCoord);
-    clearInputField();
-
-    displayHourlyWeather(hourlyWeather);
-    displayDailyWeather(hourlyWeather);
-
-    displayCityNameAndCountry(weatherData);
-    displayCurrentTemp(weatherData);
-    displayWeatherDescription(weatherData);
-    displayIcon(weatherData);
-
-    weatherDetails(weatherData);
-    sunriseAndSunset(weatherData);
+    weatherDataDisplay(weatherData, hourlyWeather);
   }
 };
+
+function weatherDataDisplay(weatherData, hourlyWeather) {
+  clearDataFromPage();
+  displayCityNameAndCountry(weatherData);
+  displayCurrentTemp(weatherData);
+  displayWeatherDescription(weatherData);
+  displayIcon(weatherData);
+
+  weatherDetails(weatherData);
+  sunriseAndSunset(weatherData);
+
+  displayHourlyWeather(hourlyWeather);
+  displayDailyWeather(hourlyWeather);
+  clearInputField();
+}
 
 function displayCityNameAndCountry(weatherData) {
   const cityName = document.createElement("h1");
@@ -159,7 +166,7 @@ function displayDailyWeather(hourlyWeather) {
       const displayTemp = document.createElement("div");
       displayTemp.textContent = `${Math.round(day.main.temp)} °C`;
       const displayDate = document.createElement("div");
-      displayDate.classList.add("day-name")
+      displayDate.classList.add("day-name");
       displayDate.textContent = eachDay;
       const singleDayDesc = document.createElement("p");
       singleDayDesc.classList.add("single-day-description");
