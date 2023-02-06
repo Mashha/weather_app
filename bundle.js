@@ -443,7 +443,7 @@ function _getCityCoordinates() {
           _context.prev = 7;
           displayLoading();
           _context.next = 11;
-          return fetch("http://api.openweathermap.org/geo/1.0/direct?q=".concat(city_name, "&appid=").concat(API_key));
+          return fetch("https://api.openweathermap.org/geo/1.0/direct?q=".concat(city_name, "&appid=").concat(API_key));
         case 11:
           resource = _context.sent;
           _context.next = 14;
@@ -552,7 +552,7 @@ function _getHourlyWeather() {
           API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
           _context3.prev = 3;
           _context3.next = 6;
-          return fetch("http://api.openweathermap.org/data/2.5/forecast?lat=".concat(lat, "&lon=").concat(lon, "&appid=").concat(API_key, "&units=metric"));
+          return fetch("https://api.openweathermap.org/data/2.5/forecast?lat=".concat(lat, "&lon=").concat(lon, "&appid=").concat(API_key, "&units=metric"));
         case 6:
           resource = _context3.sent;
           _context3.next = 9;
@@ -1363,6 +1363,7 @@ if (navigator.geolocation) {
     };
     (0,_dom__WEBPACK_IMPORTED_MODULE_1__.displayDataOnPage)({}, location);
     document.querySelector(".loading-container").style.display = "none";
+    return location;
   };
   var error = function error() {
     alert("Unable to retrieve your location, locating to Vienna");
