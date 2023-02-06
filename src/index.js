@@ -14,11 +14,12 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(success, error);
 
   function success(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-    let location = { lat, lon };
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    const location = { lat, lon };
     displayDataOnPage({}, location);
     document.querySelector(".loading-container").style.display = "none";
+    return location
   }
 
   function error() {

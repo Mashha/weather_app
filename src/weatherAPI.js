@@ -8,7 +8,7 @@ export async function getCityCoordinates(e) {
     try {
       displayLoading()
       const resource = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&appid=${API_key}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&appid=${API_key}`
       );
       const data = await resource.json();
       const lat = data[0].lat;
@@ -76,12 +76,12 @@ export async function getCurrentWeather(dataCoord) {
 }
 
 export async function getHourlyWeather(dataCoord) {
-  const lat = dataCoord.lat;
-  const lon = dataCoord.lon;
+  let lat = dataCoord.lat;
+  let lon = dataCoord.lon;
   const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
   try {
     const resource = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`
     );
     const hourlyData = await resource.json();
     const list = hourlyData.list;
