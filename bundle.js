@@ -32,7 +32,7 @@ var displayDataOnPage = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          if (!((e === null || e === void 0 ? void 0 : (_e$target = e.target) === null || _e$target === void 0 ? void 0 : (_e$target$ = _e$target[0]) === null || _e$target$ === void 0 ? void 0 : _e$target$.value) === "")) {
+          if (!(((_e$target = e.target) === null || _e$target === void 0 ? void 0 : (_e$target$ = _e$target[0]) === null || _e$target$ === void 0 ? void 0 : _e$target$.value) === "")) {
             _context.next = 4;
             break;
           }
