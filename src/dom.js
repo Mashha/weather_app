@@ -8,7 +8,7 @@ import sunriseImg from "./images/sunrise.png";
 import sunsetImg from "./images/sunset.png";
 
 export const displayDataOnPage = async (e, geoPosition) => {
-  if (e?.target?.[0]?.value === "") {
+  if (e.target?.[0]?.value === "") {
     return;
   } else if (geoPosition !== undefined) {
     const weatherData = await getCurrentWeather(geoPosition);
