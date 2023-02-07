@@ -51,23 +51,31 @@ var displayDataOnPage = /*#__PURE__*/function () {
         case 10:
           hourlyWeather = _context.sent;
           weatherDataDisplay(weatherData, hourlyWeather);
-          _context.next = 24;
+          _context.next = 30;
           break;
         case 14:
           _context.next = 16;
           return (0,_weatherAPI_js__WEBPACK_IMPORTED_MODULE_1__.getCityCoordinates)(e);
         case 16:
           dataCoord = _context.sent;
-          _context.next = 19;
+          if (!(dataCoord === "Invalid city name")) {
+            _context.next = 23;
+            break;
+          }
+          invalidCityName();
+          clearInputField();
+          return _context.abrupt("return");
+        case 23:
+          _context.next = 25;
           return (0,_weatherAPI_js__WEBPACK_IMPORTED_MODULE_1__.getCurrentWeather)(dataCoord);
-        case 19:
+        case 25:
           _weatherData = _context.sent;
-          _context.next = 22;
+          _context.next = 28;
           return (0,_weatherAPI_js__WEBPACK_IMPORTED_MODULE_1__.getHourlyWeather)(dataCoord);
-        case 22:
+        case 28:
           _hourlyWeather = _context.sent;
           weatherDataDisplay(_weatherData, _hourlyWeather);
-        case 24:
+        case 30:
         case "end":
           return _context.stop();
       }
@@ -291,6 +299,9 @@ function clearDataFromPage() {
   document.querySelector(".sunset").textContent = "";
   document.querySelector(".weather-days").textContent = "";
 }
+function invalidCityName() {
+  alert("Invalid city name");
+}
 
 /***/ }),
 
@@ -450,6 +461,13 @@ function _getCityCoordinates() {
           return resource.json();
         case 14:
           data = _context.sent;
+          if (!(data.length === 0)) {
+            _context.next = 20;
+            break;
+          }
+          hideLoading();
+          return _context.abrupt("return", "Invalid city name");
+        case 20:
           lat = data[0].lat;
           lon = data[0].lon;
           coordinates = {
@@ -458,17 +476,20 @@ function _getCityCoordinates() {
           };
           hideLoading();
           return _context.abrupt("return", coordinates);
-        case 22:
-          _context.prev = 22;
+        case 25:
+          _context.next = 30;
+          break;
+        case 27:
+          _context.prev = 27;
           _context.t0 = _context["catch"](7);
           (function (err) {
             return console.log(err);
           });
-        case 25:
+        case 30:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[7, 22]]);
+    }, _callee, null, [[7, 27]]);
   }));
   return _getCityCoordinates.apply(this, arguments);
 }

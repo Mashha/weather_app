@@ -16,10 +16,15 @@ export const displayDataOnPage = async (e, geoPosition) => {
     weatherDataDisplay(weatherData, hourlyWeather);
   } else {
     const dataCoord = await getCityCoordinates(e);
+    if(dataCoord === "Invalid city name"){
+      invalidCityName()
+      clearInputField()
+      return 
+    }else {
     const weatherData = await getCurrentWeather(dataCoord);
     const hourlyWeather = await getHourlyWeather(dataCoord);
     weatherDataDisplay(weatherData, hourlyWeather);
-  }
+  }}
 };
 
 function weatherDataDisplay(weatherData, hourlyWeather) {
@@ -305,4 +310,8 @@ function clearDataFromPage() {
   document.querySelector(".sunrise").textContent = "";
   document.querySelector(".sunset").textContent = "";
   document.querySelector(".weather-days").textContent = "";
+}
+
+function invalidCityName(){
+  alert("Invalid city name")
 }

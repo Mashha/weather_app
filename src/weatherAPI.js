@@ -6,21 +6,27 @@ export async function getCityCoordinates(e) {
   } else {
     const API_key = "3ba98b4b745fa42c31dff2a783d52b5c";
     try {
-      displayLoading()
+      displayLoading();
       const resource = await fetch(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&appid=${API_key}`
       );
-      const data = await resource.json();
-      const lat = data[0].lat;
-      const lon = data[0].lon;
 
-      const coordinates = {
-        lat,
-        lon,
-      };
-      
-      hideLoading()
-      return coordinates;
+      const data = await resource.json();
+      if (data.length === 0) {
+        hideLoading()
+      return "Invalid city name"
+      }else {
+        const lat = data[0].lat;
+        const lon = data[0].lon;
+
+        const coordinates = {
+          lat,
+          lon,
+        };
+
+        hideLoading();
+        return coordinates;
+      }
     } catch {
       (err) => console.log(err);
     }
@@ -36,7 +42,7 @@ export async function getCurrentWeather(dataCoord) {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`
     );
     const data = await resource.json();
-    
+
     const cityName = data.name;
     const country = data.sys.country;
     const currentTemp = data.main.temp;
